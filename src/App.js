@@ -1,44 +1,31 @@
-import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Bio from './components/Bio';
+import FamousPainting from './components/FamousPainting';
+import ArtCollection from './components/ArtCollection';
 
 function App() {
-  const [inputValue, setInputValue] = useState(''); 
-  
-  const updateInput = (value) => {
-    setInputValue((prevValue) => prevValue + value);
-  };
-
-  const calculateResult = () => {
-    setInputValue(eval(inputValue).toString());
-  };
 
   return (
     <div className="App">
-      <input value={inputValue} readOnly />
-      <div>
-        <button onClick={() => updateInput('7')}>7</button>
-        <button onClick={() => updateInput('8')}>8</button>
-        <button onClick={() => updateInput('9')}>9</button>
-        <button onClick={() => updateInput('+')}>+</button>
-      </div>
-      <div>
-        <button onClick={() => updateInput('4')}>4</button>
-        <button onClick={() => updateInput('5')}>5</button>
-        <button onClick={() => updateInput('6')}>6</button>
-        <button onClick={() => updateInput('-')}>-</button>
-      </div>
-      <div>
-        <button onClick={() => updateInput('1')}>1</button>
-        <button onClick={() => updateInput('2')}>2</button>
-        <button onClick={() => updateInput('3')}>3</button>
-        <button onClick={() => updateInput('*')}>*</button>
-      </div>
-      <div>
-        <button onClick={() => updateInput('.')}>.</button>
-        <button onClick={() => updateInput('0')}>0</button>
-        <button onClick={calculateResult}>=</button>
-        <button onClick={() => updateInput('/')}>/</button>
-      </div>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li><Link to="/bio">Биография</Link></li>
+              <li><Link to="/famous-painting">Известная картина</Link></li>
+              <li><Link to="/art-collection">Коллекция картин</Link></li>
+            </ul>
+          </nav>
+
+          <hr />
+          <Routes>
+            <Route path="/bio" element={<Bio />} />
+            <Route path="/famous-painting" element={<FamousPainting/>} />
+            <Route path="/art-collection" element={<ArtCollection/>} />
+          </Routes>
+        </div>
+      </Router>
     </div>
 
   );
