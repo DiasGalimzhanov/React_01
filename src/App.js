@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Bio from './components/Bio';
-import FamousPainting from './components/FamousPainting';
-import ArtCollection from './components/ArtCollection';
+import Info from './components/Info';
+import MainAttraction from './components/MainAttraction';
+import OtherAttraction from './components/OtherAttraction';
+import Photo from './components/Photo';
 
 function App() {
 
@@ -12,17 +13,19 @@ function App() {
         <div>
           <nav>
             <ul>
-              <li><Link to="/bio">Биография</Link></li>
-              <li><Link to="/famous-painting">Известная картина</Link></li>
-              <li><Link to="/art-collection">Коллекция картин</Link></li>
+              <li><Link to="/info">Информация о городе</Link></li>
+              <li><Link to="/main-attraction">Главная достопримечательность</Link></li>
+              <li><Link to="/art-collection">Другие достопримечательности</Link></li>
+              <li><Link to="/photo">Фотографии города</Link></li>
             </ul>
           </nav>
 
           <hr />
           <Routes>
-            <Route path="/bio" element={<Bio />} />
-            <Route path="/famous-painting" element={<FamousPainting/>} />
-            <Route path="/art-collection" element={<ArtCollection/>} />
+            <Route path="/info" element={<Info />} />
+            <Route path="/main-attraction" element={<MainAttraction/>} />
+            <Route path="/art-collection" element={<OtherAttraction/>} />
+            <Route path="/photo" element={<Photo/>} />
           </Routes>
         </div>
       </Router>
